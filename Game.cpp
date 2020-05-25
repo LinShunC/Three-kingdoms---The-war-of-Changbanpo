@@ -27,7 +27,7 @@ int main(void)
 	const Uint32 frame_time_ms = milliseconds_per_seconds / frames_per_second;
 
 	Uint32 frame_start_time_ms = 0;
-	//int time_when_hit = 0;
+	//int time_when_hit = 1;
 	Uint32 frame_end_time_ms = frame_time_ms;
 	while (!input->is_button_state(Input::Button::QUIT,Input::Button_State::PRESSED))
 	{
