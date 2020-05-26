@@ -1,12 +1,12 @@
 #include "game_scene.h"
 #include "dino.h"
 #include "walking_dino.h"
-#include "zombie.h"
+
 #include "player.h"
 #include "girl.h"
 #include "portal_purple.h"
 #include "portal_green.h"
-#include "man.h"
+
 #include "enemy.h"
 #include "background.h"
 
@@ -46,11 +46,11 @@ Game_Scene::Game_Scene()
 
 	Game_Object* Entry = new Portal_Entry("Entry");
 	_game_objects[Entry->id()] = Entry;*/
-	add_game_object(new Dino("Dino"));
+	//add_game_object(new Dino("Dino"));
 	add_game_object(new Background("background"));
-	add_game_object(new Walking_Dino("Dino.Walking"));
+	//add_game_object(new Walking_Dino("Dino.Walking"));
 	add_game_object(new Player("player"));
-	add_game_object(new Girl("girl"));
+	//add_game_object(new Girl("girl"));
 	add_game_object(new Portal_Exit("Exit"));
 	add_game_object(new Portal_Entry("Entry"));
 	add_game_object(new Enemy("Enemy"));

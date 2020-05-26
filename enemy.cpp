@@ -3,6 +3,7 @@
 #include "enemy.h"
 #include "player.h"
 int time_when_dead = 890;
+
 Enemy::Enemy(std::string id)
 	: Game_Object(id, "enemy.run")
 {
@@ -36,7 +37,7 @@ void Enemy::simulate_AI(Uint32 milliseconds_to_simulate, Assets*, Input*, Scene*
 
 	float distance_to_player = (portal_center - player_center).magnitude();
 
-	if (player->getState() == "attack" && distance_to_player <= 50.f) 
+	if (player->getState() == "attack" && distance_to_player <= 60.f) 
 	{
 		Enemy* enemy = (Enemy*)scene->get_game_object(id());
 		enemy->setID("enemy.dieing");
@@ -70,7 +71,7 @@ void Enemy::simulate_AI(Uint32 milliseconds_to_simulate, Assets*, Input*, Scene*
 			if (time_when_dead <= 0)
 			{
 				scene->remove_game_object(id());
-				scene->add_game_object(new Enemy(id()));
+				// scene->add_game_object(new Enemy(id()));
 			}
 		
 	}

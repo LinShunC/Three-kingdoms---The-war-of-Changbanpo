@@ -23,7 +23,7 @@ Assets::Assets(SDL_Renderer* renderer)
 
 	Animated_Texture* player =
 		new Animated_Texture("player.dieing", "Assets/player.dieing.png", renderer,
-			frame_count_player, frame_duration_milliseconds_player);
+			frame_count_player, frame_duration_milliseconds_player, false);
 	_asset[player->id()] = player;
 	}
 
@@ -32,7 +32,7 @@ Assets::Assets(SDL_Renderer* renderer)
 
 	Animated_Texture* Enemy =
 		new Animated_Texture("enemy.run", "Assets/enemy_run.png", renderer,
-			frame_count_player, frame_duration_milliseconds_player);
+			frame_count_player, frame_duration_milliseconds_player,true);
 	_asset[Enemy->id()] = Enemy;
 	}
 
@@ -41,7 +41,7 @@ Assets::Assets(SDL_Renderer* renderer)
 
 	Animated_Texture* Enemy =
 		new Animated_Texture("enemy.dieing", "Assets/enemy_dead.png", renderer,
-			frame_count_player, frame_duration_milliseconds_player);
+			frame_count_player, frame_duration_milliseconds_player, true);
 	_asset[Enemy->id()] = Enemy;
 	}
 	{const int frame_count_player = 10;
@@ -49,7 +49,7 @@ Assets::Assets(SDL_Renderer* renderer)
 
 	Animated_Texture* player =
 		new Animated_Texture("player.walking", "Assets/player.walking.png", renderer,
-			frame_count_player, frame_duration_milliseconds_player);
+			frame_count_player, frame_duration_milliseconds_player, true);
 	_asset[player->id()] = player;
 	}
 
@@ -60,7 +60,7 @@ Assets::Assets(SDL_Renderer* renderer)
 
 		Animated_Texture* player =
 			new Animated_Texture("player.idle", "Assets/player.idle.png", renderer,
-				frame_count_player, frame_duration_milliseconds_player);
+				frame_count_player, frame_duration_milliseconds_player, true);
 		_asset[player->id()] = player;
 	}
 	{
@@ -69,7 +69,7 @@ Assets::Assets(SDL_Renderer* renderer)
 
 		Animated_Texture* player =
 			new Animated_Texture("player.attack", "Assets/player.attack.png", renderer,
-				frame_count_player, frame_duration_milliseconds_player);
+				frame_count_player, frame_duration_milliseconds_player, true);
 		_asset[player->id()] = player;
 	}
 	{
@@ -78,7 +78,7 @@ Assets::Assets(SDL_Renderer* renderer)
 
 		Animated_Texture* player =
 			new Animated_Texture("player.slide", "Assets/player.slide.png", renderer,
-				frame_count_player, frame_duration_milliseconds_player);
+				frame_count_player, frame_duration_milliseconds_player, true);
 		_asset[player->id()] = player;
 	}
 
@@ -88,7 +88,7 @@ Assets::Assets(SDL_Renderer* renderer)
 
 	Animated_Texture* walking_dino_texture =
 		new Animated_Texture("Texture.Dino.Walking", "Assets/dino.walking.png", renderer,
-			frame_count, frame_duration_milliseconds);
+			frame_count, frame_duration_milliseconds, true);
 	_asset[walking_dino_texture->id()] = walking_dino_texture;
 	}
 
@@ -97,7 +97,7 @@ Assets::Assets(SDL_Renderer* renderer)
 
 	Animated_Texture* portal_green_texture =
 		new Animated_Texture("Texture.portal.green", "Assets/portal.green.png", renderer,
-			frame_count, frame_duration_milliseconds);
+			frame_count, frame_duration_milliseconds,  true);
 	_asset[portal_green_texture->id()] = portal_green_texture;
 	}
 	{const int frame_count = 8;
@@ -105,29 +105,20 @@ Assets::Assets(SDL_Renderer* renderer)
 
 	Animated_Texture* portal_purple_texture =
 		new Animated_Texture("Texture.portal.purple", "Assets/portal.purple.png", renderer,
-			frame_count, frame_duration_milliseconds);
+			frame_count, frame_duration_milliseconds, true);
 	_asset[portal_purple_texture->id()] = portal_purple_texture;
 	}
 
 
 
-	const int frame_count_zombie = 6;
-	const Uint32 frame_duration_milliseconds_zombie = 300;
-	Animated_Texture* zombie = new Animated_Texture("zombie", "Assets/zombie.png", renderer,
-		frame_count_zombie, frame_duration_milliseconds_zombie);
-	_asset[zombie->id()] = zombie;
-
+	
 	const int frame_count_girl = 4;
 	const Uint32 frame_duration_milliseconds_girl = 300;
 	Animated_Texture* girl = new Animated_Texture("girl", "Assets/girl.png", renderer,
-		frame_count_girl, frame_duration_milliseconds_girl);
+		frame_count_girl, frame_duration_milliseconds_girl, true);
 	_asset[girl->id()] = girl;
 
-	const int frame_count_man = 4;
-	const Uint32 frame_duration_milliseconds_man = 300;
-	Animated_Texture* man = new Animated_Texture("man", "Assets/man.png", renderer,
-		frame_count_man, frame_duration_milliseconds_man);
-	_asset[man->id()] = man;
+	
 
 
 

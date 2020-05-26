@@ -127,29 +127,6 @@ void Engine::render(Uint32 milliseconds_to_simulate, Assets* assets, Scene* scen
 	}
 
 
-	/*Texture dino = Texture("Assets/dino.bmp", _renderer);
-	SDL_Rect destination;
-	destination.x = 220;
-	destination.y = 220;
-	destination.w = 200;
-
-	destination.h = 200;
-	dino.render(_renderer,nullptr,&destination,SDL_FLIP_NONE );*/
-	{/*Texture* dino = (Texture*)assets->get_asset("Texture.Dino");
-	SDL_Rect destination;
-	destination.x = 50;
-	destination.y = 50;
-	destination.w = 100;
-	destination.h = 100;*/
-	
-
-	}
-	
-		/*std::vector<Game_Object*> game_objects = scene->get_game_objects();
-		for (Game_Object* game_object : game_objects)
-		{
-			game_object->render(milliseconds_to_simulate, assets, _renderer);
-		}*/
 		std::vector<Game_Object*> sorted_game_objects = scene->get_game_objects();
 		const struct
 		{
@@ -167,85 +144,7 @@ void Engine::render(Uint32 milliseconds_to_simulate, Assets* assets, Scene* scen
 
 		SDL_RenderPresent(_renderer);
 	
-	/*{
-		const int frame_count = 10;
-		const Uint32 frame_duration_milliseconds = 200;
 
-		Animated_Texture* walking_dino = (Animated_Texture*)assets->get_asset("Texture.Dino.Walking");
-
-		walking_dino->update_frame(milliseconds_to_simulate);
-
-		SDL_Rect destination;
-		destination.x = 250;
-		destination.y = 50;
-		destination.w = 100;
-		destination.h = 100;
-		walking_dino->render(_renderer, nullptr, &destination, SDL_FLIP_NONE);
-
-	}
-
-	{
-		Animated_Texture* man = (Animated_Texture*)assets->get_asset("man");
-
-		man->update_frame(milliseconds_to_simulate);
-
-		SDL_Rect destination;
-		destination.x = 350;
-		destination.y = 200;
-		destination.w = 100;
-		destination.h = 100;
-		man->render(_renderer, nullptr, &destination, SDL_FLIP_VERTICAL);
-	}
-	{
-		Animated_Texture* zombie = (Animated_Texture*)assets->get_asset("zombie");
-
-		zombie->update_frame(milliseconds_to_simulate);
-
-		SDL_Rect destination;
-		destination.x = 250;
-		destination.y = 400;
-		destination.w = 100;
-		destination.h = 100;
-		zombie->render(_renderer, nullptr, &destination, SDL_FLIP_VERTICAL);
-	}
-	{
-		Animated_Texture* coin = (Animated_Texture*)assets->get_asset("coin");
-
-		coin->update_frame(milliseconds_to_simulate);
-
-		SDL_Rect destination;
-		destination.x = 450;
-		destination.y = 400;
-		destination.w = 150;
-		destination.h = 150;
-		coin->render(_renderer, nullptr, &destination, SDL_FLIP_HORIZONTAL);
-	}
-	{
-		Animated_Texture* girl = (Animated_Texture*)assets->get_asset("girl");
-
-		girl->update_frame(milliseconds_to_simulate);
-
-		SDL_Rect destination;
-		destination.x = 50;
-		destination.y = 400;
-		destination.w = 150;
-		destination.h = 150;
-		girl->render(_renderer, nullptr, &destination, SDL_FLIP_HORIZONTAL);
-	}
-	{
-		Animated_Texture* run = (Animated_Texture*)assets->get_asset("run");
-
-		run->update_frame(milliseconds_to_simulate);
-
-		SDL_Rect destination;
-		destination.x = 50;
-		destination.y = 200;
-		destination.w = 150;
-		destination.h = 150;
-		run->render(_renderer, nullptr, &destination, SDL_FLIP_NONE);
-	}
-
-	*/
 
 
 	SDL_RenderPresent(_renderer);
