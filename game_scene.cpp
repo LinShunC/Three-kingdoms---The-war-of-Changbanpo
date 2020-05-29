@@ -19,38 +19,9 @@ Game_Scene::Game_Scene()
 	_background_color.b = 255;
 	_background_color.g = 0;
 
-	/*Game_Object* dino = new Dino("Dino");
-	_game_objects[dino->id()] = dino;
-
-	Game_Object* background = new Background("background");
-	_game_objects[background->id()] = background;
-
-	Game_Object* dino_walking = new Walking_Dino("Dino.Walking");
-	_game_objects[dino_walking->id()] = dino_walking;
-
-
-	//Game_Object* zombie = new Zombie("zombie");
-	//_game_objects[zombie->id()] = zombie;
-
-	Game_Object* player = new Player("player");
-	_game_objects[player->id()] = player;
-
-	Game_Object* girl = new Girl("girl");
-	_game_objects[girl->id()] = girl;
-
-	//Game_Object* man = new Man("man");
-	//_game_objects[man->id()] = man;
-
-	Game_Object* Exit = new Portal_Exit("Exit");
-	_game_objects[Exit->id()] = Exit;
-
-	Game_Object* Entry = new Portal_Entry("Entry");
-	_game_objects[Entry->id()] = Entry;*/
-	//add_game_object(new Dino("Dino"));
 	add_game_object(new Background("background"));
-	//add_game_object(new Walking_Dino("Dino.Walking"));
+
 	add_game_object(new Player("player"));
-	//add_game_object(new Girl("girl"));
 	add_game_object(new Portal_Exit("Exit"));
 	add_game_object(new Portal_Entry("Entry"));
 	add_game_object(new Enemy("Enemy"));

@@ -135,6 +135,7 @@ void Engine::render(Uint32 milliseconds_to_simulate, Assets* assets, Scene* scen
 				return a->translation().y() < b->translation().y();
 			}
 		} sort_by_y_order;
+
 		std::sort(sorted_game_objects.begin(), sorted_game_objects.end(), sort_by_y_order);
 
 		for (Game_Object* game_object : sorted_game_objects)

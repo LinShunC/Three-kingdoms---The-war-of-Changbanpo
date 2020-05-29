@@ -14,12 +14,12 @@ Player::Player(std::string id)
 	_collider.set_radius(_width / 5.0f);
 	_collider.set_translation(Vector_2D(_width / 2.0f, (float)_height));
 	_state.push(State::Idle);
-
+	
 	_width = 90;
 	_height = 90;
 	_current_run_timer_ms = 0;
 	_next_run_time_ms = 0;
-
+	_dead_times = 0;
 	distance_to_enemy = 0.0f;
 	
 
@@ -36,13 +36,15 @@ void Player::render(Uint32 milliseconds_to_simulate, Assets* assets, SDL_Rendere
 	Game_Object::render(milliseconds_to_simulate, assets, renderer, config, scene);
 }
 
-void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input* input, Scene* scene)
+void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input* input, Scene* scene )
 {
+	if (_dead_times < 3) {
+		if (scene->get_game_object("Enemy") == NULL)
+		{
+			scene->add_game_object(new Enemy("Enemy"));
+			_dead_times += 1;
 
-	if (scene->get_game_object("Enemy") == NULL)
-	{
-		scene->add_game_object(new Enemy("Enemy"));
-
+		}
 	}
 	State state = _state.top();
 
