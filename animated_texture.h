@@ -9,7 +9,7 @@
 class Animated_Texture : public Texture
 {
 public:
-	Animated_Texture(string id, string path, SDL_Renderer* renderer, int frame_count, Uint32 frame_duration_milliseconds);
+	Animated_Texture(string id, string path, SDL_Renderer* renderer, int frame_count, Uint32 frame_duration_milliseconds, bool should_loop);
 	~Animated_Texture();
 
 	virtual void render(SDL_Renderer* renderer, SDL_Rect* clip, SDL_Rect* destination, SDL_RendererFlip flip);
@@ -22,5 +22,6 @@ private:
 	Uint32   _frame_duration_milliseconds;
 	Uint32   _total_time_milliseconds;
 	int      _current_frame;
+	bool     _should_loop;
 	
 };

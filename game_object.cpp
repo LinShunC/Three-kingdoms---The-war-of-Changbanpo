@@ -44,15 +44,17 @@ void Game_Object::simulate_physics(Uint32 milliseconds_to_simulate, Assets*, Sce
 
 		if (intersection_depth > 0.0f)
 		{
-			Vector_2D other_collider_to_collider = collider.translation() - other_collider.translation();
-			other_collider_to_collider.normalize();
-			other_collider_to_collider.scale(intersection_depth);
-			_translation += other_collider_to_collider;
 
-			Vector_2D collider_to_other_collider = other_collider.translation() - collider.translation();
-			collider_to_other_collider.normalize();
-			collider_to_other_collider.scale(intersection_depth);
-			game_object->_translation += collider_to_other_collider;
+				Vector_2D other_collider_to_collider = collider.translation() - other_collider.translation();
+				other_collider_to_collider.normalize();
+				other_collider_to_collider.scale(intersection_depth);
+				_translation += other_collider_to_collider;
+
+				Vector_2D collider_to_other_collider = other_collider.translation() - collider.translation();
+				collider_to_other_collider.normalize();
+				collider_to_other_collider.scale(intersection_depth);
+				game_object->_translation += collider_to_other_collider;
+			
 		}
 	}
 
@@ -80,14 +82,8 @@ void Game_Object::render(Uint32, Assets* assets,SDL_Renderer* renderer, Configur
 	}
 
 	Texture* texture = (Texture*)assets->get_asset(_texture_id);
-	if (_texture_id == "enemy.run") 
-	{
-		texture->render(renderer, nullptr, &destination, SDL_FLIP_HORIZONTAL);
-	}
-	else {
-		texture->render(renderer, nullptr, &destination, _flip);
-	}
-	
+
+	texture->render(renderer, nullptr, &destination, _flip);
 	if (config->should_display_ids)
 	{
 		SDL_Color text_color;
@@ -166,4 +162,8 @@ int Game_Object::width()
 void Game_Object::set_translation(Vector_2D translation) 
 {
 	_translation = translation;
+}
+void Game_Object::set_velocity(Vector_2D velocity)
+{
+	_velocity = velocity;
 }

@@ -2,6 +2,7 @@
 
 #include "player.h"
 #include "input.h"
+#include"enemy.h"
 
 int time_when_hit = 0;
 
@@ -13,11 +14,14 @@ Player::Player(std::string id)
 	_collider.set_radius(_width / 5.0f);
 	_collider.set_translation(Vector_2D(_width / 2.0f, (float)_height));
 	_state.push(State::Idle);
-
+	_translation = Vector_2D(0, 0);
 	_width = 90;
 	_height = 90;
 	_current_run_timer_ms = 0;
 	_next_run_time_ms = 0;
+	_dead_times = 0;
+	distance_to_enemy = 50.0f;
+	
 
 }
 Player::~Player()
@@ -32,18 +36,20 @@ void Player::render(Uint32 milliseconds_to_simulate, Assets* assets, SDL_Rendere
 	Game_Object::render(milliseconds_to_simulate, assets, renderer, config, scene);
 }
 
-void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input* input, Scene* scene)
+void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input* input, Scene*  )
 {
+	/*if (_dead_times < 3) {
+		if (scene->get_game_object("Enemy") == NULL)
+		{
+			scene->add_game_object(new Enemy("Enemy"));
+			_dead_times += 1;
+
+		}
+	}*/
 	State state = _state.top();
 
-
-	Game_Object* player = (Game_Object*)scene->get_game_object("girl");
-	Vector_2D portal_center = _translation
-		+ Vector_2D((float)_width / 2, (float)_height / 2);
-	Vector_2D player_center = player->translation()
-		+ Vector_2D((float)player->width() / 2, (float)player->height() / 2);
-
-	float distance_to_player = (portal_center - player_center).magnitude();
+	
+	
 
 	_next_run_time_ms -= milliseconds_to_simulate;
 	_current_run_timer_ms -= milliseconds_to_simulate;
@@ -64,7 +70,7 @@ void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input*
 		{
 			push_state(State::Attack, assets);
 		}
-		 if (distance_to_enemy <	10.0f)
+		 if (distance_to_enemy < 10.0f)
 		{
 			push_state(State::Dieing, assets);
 		}
@@ -115,7 +121,7 @@ void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input*
 		break;
 	case State::Dieing:
 		
-		// if (distance_to_player > 50.0f && _velocity.magnitude() == 0.0f)
+	/*	// if (distance_to_player > 50.0f && _velocity.magnitude() == 0.0f)
 	//	{
 	//		pop_state(assets);
 	//	}
@@ -126,7 +132,7 @@ void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input*
 		 else if (distance_to_player > 50.0f && _velocity.magnitude() > 0.0f)
 		 {
 			 push_state(State::Walking, assets);
-		 }
+		 }*/
 		break;
 
 	case State::Attack:
@@ -174,7 +180,7 @@ void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input*
 	{
 		time_when_hit -= milliseconds_to_simulate;
 		if (time_when_hit < 0) {
-			pop_state(assets);
+			pop_state(assets);	
 		}
 	}
 

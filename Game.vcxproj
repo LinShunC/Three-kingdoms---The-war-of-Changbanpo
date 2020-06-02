@@ -160,7 +160,6 @@
     <ClCompile Include="game_scene.cpp" />
     <ClCompile Include="girl.cpp" />
     <ClCompile Include="input.cpp" />
-    <ClCompile Include="man.cpp" />
     <ClCompile Include="pause_scene.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="portal_green.cpp" />
@@ -171,7 +170,6 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="vector_2D.cpp" />
     <ClCompile Include="walking_dino.cpp" />
-    <ClCompile Include="zombie.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animated_texture.h" />
@@ -188,7 +186,6 @@
     <ClInclude Include="game_scene.h" />
     <ClInclude Include="girl.h" />
     <ClInclude Include="input.h" />
-    <ClInclude Include="man.h" />
     <ClInclude Include="pause_scene.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="portal_green.h" />
@@ -200,7 +197,6 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="vector_2D.h" />
     <ClInclude Include="walking_dino.h" />
-    <ClInclude Include="zombie.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\dino.bmp">

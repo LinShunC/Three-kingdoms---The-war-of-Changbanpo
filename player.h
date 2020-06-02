@@ -42,6 +42,7 @@ private:
 	float distance_to_enemy;
 	int _current_run_timer_ms;
 	int _next_run_time_ms;
+	int _dead_times;
 
 
 
