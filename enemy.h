@@ -13,6 +13,6 @@ public:
 	void setID(string id);
 private:
 	bool _has_spawned_another = false;
-	int dead_time;
+	int _exit_time;
 
 };

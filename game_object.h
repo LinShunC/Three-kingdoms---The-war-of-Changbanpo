@@ -31,6 +31,7 @@ public:
 	int width();
 
 	void set_translation(Vector_2D translation);
+	void set_velocity(Vector_2D velocity);
 
 protected:
 	std::string _id;

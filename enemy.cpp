@@ -2,6 +2,7 @@
 
 #include "enemy.h"
 #include "player.h"
+#include <iostream>
 
 int time_when_dead = 890;
 
@@ -11,7 +12,15 @@ Enemy::Enemy(std::string id)
 	int y  = rand() % 200;
 	_translation = Vector_2D(350, (float) -y);
 	_velocity = Vector_2D(-0.1f, 0);
-	dead_time = 0;
+	_collider.set_radius(_width / 5.0f);
+	_collider.set_translation(Vector_2D(_width / 2.0f, (float)_height));
+
+	if (_velocity.x() < 0)
+	{
+		_flip = SDL_FLIP_HORIZONTAL;
+
+	}
+	_exit_time = 2500;
 }
 Enemy::~Enemy()
 {
@@ -27,11 +36,11 @@ void Enemy::render(Uint32 milliseconds_to_simulate, Assets* assets, SDL_Renderer
 
 void Enemy::simulate_AI(Uint32 milliseconds_to_simulate, Assets*, Input*, Scene* scene)
 {
-
+	_exit_time -= milliseconds_to_simulate;
 
 	Player* player = (Player*)scene->get_game_object("player");
 	player->getState();
-     
+	
 	Vector_2D portal_center = _translation
 		+ Vector_2D((float)_width / 2, (float)_height / 2);
 	Vector_2D player_center = player->translation()
@@ -69,7 +78,11 @@ void Enemy::simulate_AI(Uint32 milliseconds_to_simulate, Assets*, Input*, Scene*
 			}
 		
 	}
-
+	 if (_exit_time < 0)
+	 {
+		 scene->remove_game_object(id());
+		 std::cout << "Destroyed " << id() << std::endl;
+	 }
 }
 
 void Enemy::setID(string id)
