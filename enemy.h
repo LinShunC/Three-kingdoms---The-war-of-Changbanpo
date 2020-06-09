@@ -1,7 +1,8 @@
 #pragma once
 
 #include "game_object.h"
-
+#include <time.h>
+#include <random>
 class Enemy : public Game_Object
 {
 public:
@@ -14,5 +15,9 @@ public:
 private:
 	bool _has_spawned_another = false;
 	int _exit_time;
+
+	Animated_Texture* _texture;
+	int _change_direction_timer;
+	std::minstd_rand0 _generator;
 
 };

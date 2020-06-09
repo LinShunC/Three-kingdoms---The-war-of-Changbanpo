@@ -6,6 +6,7 @@
 #include<SDL.h>
 #include<SDL_syswm.h>
 #include<iostream>
+int time = 1;
 
 Editor::Editor(std::wstring window_name) 
 {
@@ -56,6 +57,13 @@ INT_PTR CALLBACK Dialog_Proc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM )
 			case IDC_BUTTON3:
 				EndDialog(hwnd, IDOK);
 				break;
+			case IDC_BUTTON4:
+				EndDialog(hwnd, IDOK);
+				break;
+			case IDC_BUTTON5:
+				EndDialog(hwnd, IDOK);
+				break;
+			
 			}
 			break;
 	   
@@ -163,6 +171,16 @@ void  Editor::update(Input* input,Scene* scene, Configuration* config)
 		DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_DIALOG3), _window, Dialog_Proc);
 
 	}
+	Player* player = (Player*)scene->get_game_object("player"); 
 	
-
+	if (player->getDeadTimes() >= 3 && time ==1 ) 
+	{
+		DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_DIALOG4), _window, Dialog_Proc);
+		time = 0;
+	}
+	if (player->getState() == "Dieing" && time == 1)
+	{
+		DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_DIALOG5), _window, Dialog_Proc);
+		time = 0;
+}
 }

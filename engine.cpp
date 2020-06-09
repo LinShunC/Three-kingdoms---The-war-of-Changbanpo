@@ -34,6 +34,7 @@ Engine::Engine(std::string window_name, Configuration* config) {
 	const int h = 600;
 
 	_window = SDL_CreateWindow(game_title, x, y, config->window_width, config->window_height, SDL_WINDOW_RESIZABLE);
+
 	if (_window == nullptr)
 	{
 		std::cout << "Failed to create SDL window" << std::endl;
@@ -42,6 +43,8 @@ Engine::Engine(std::string window_name, Configuration* config) {
 	}
 	const int first_renderer = -1;
 	_renderer = SDL_CreateRenderer(_window, first_renderer, 0);
+
+
 	if (_renderer == nullptr)
 	{
 		std::cout << "Failed to create Renderer" << std::endl;

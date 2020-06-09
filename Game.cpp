@@ -10,12 +10,14 @@
 #include"configuration.h"
 #include "pause_scene.h"
 #include <stack>
+
 int main(void)
 {
 	Configuration* config = new Configuration();
 	Engine* engine = new Engine("Game",  config);
 	Assets* assets = new Assets(engine->renderer());
 	Input* input = new Input();
+
 
 	Editor* editor = new Editor(L"Game");
 
@@ -37,7 +39,7 @@ int main(void)
 		
 		scenes.top()->update(engine->window());
 		input->get_input();
-
+	
 
 		if (input->is_button_state(Input::Button::PAUSE,Input::Button_State::PRESSED)) 
 		{
@@ -86,6 +88,19 @@ int main(void)
 
 		engine->simulate(previous_frame_duration, assets, scenes.top(),input, config);
 
+
+		std::vector<Game_Object*> game_objects = scenes.top()->get_game_objects();
+		for (Game_Object* game_object : game_objects)
+		{
+			if (game_object->to_be_destroyed())
+			{
+				scenes.top()->remove_game_object(game_object->id());
+				delete game_object;
+			}
+		}
+
+	
+
 		const Uint32 current_time_ms = SDL_GetTicks();
 		const Uint32 frame_duration_ms = current_time_ms - frame_start_time_ms;
 		if (frame_duration_ms < frame_time_ms)
@@ -96,7 +111,6 @@ int main(void)
 
 		frame_end_time_ms = SDL_GetTicks();
 
-		//std::cout << frame_end_time_ms - frame_start_time_ms << std::endl;
 	}
 
 	return 0;

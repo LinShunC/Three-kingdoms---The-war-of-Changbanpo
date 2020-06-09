@@ -1,5 +1,6 @@
 #include "game_object.h"
 #include"text.h"
+#include <iostream>
 
 Game_Object::Game_Object(string id, string texture_id) : _translation(0, 0), _velocity(0, 0),_collider(0.0f,Vector_2D(0.f,0.f))
 {
@@ -8,6 +9,8 @@ Game_Object::Game_Object(string id, string texture_id) : _translation(0, 0), _ve
 
 
 	_width = 100;
+	_to_be_destroyed = false;
+
 	_height = 100;
 
 
@@ -44,6 +47,14 @@ void Game_Object::simulate_physics(Uint32 milliseconds_to_simulate, Assets*, Sce
 
 		if (intersection_depth > 0.0f)
 		{
+			bool is_projectile_and_player = (id().find("enemy") != -1 && game_object->id() == "player") ||
+				(game_object->id().find("enemy") != -1 && id() == "player");
+
+			if (is_projectile_and_player)
+			{
+
+			}
+			else {
 
 				Vector_2D other_collider_to_collider = collider.translation() - other_collider.translation();
 				other_collider_to_collider.normalize();
@@ -54,6 +65,7 @@ void Game_Object::simulate_physics(Uint32 milliseconds_to_simulate, Assets*, Sce
 				collider_to_other_collider.normalize();
 				collider_to_other_collider.scale(intersection_depth);
 				game_object->_translation += collider_to_other_collider;
+			}
 			
 		}
 	}
@@ -166,4 +178,8 @@ void Game_Object::set_translation(Vector_2D translation)
 void Game_Object::set_velocity(Vector_2D velocity)
 {
 	_velocity = velocity;
+}
+bool Game_Object::to_be_destroyed()
+{
+	return _to_be_destroyed;
 }
