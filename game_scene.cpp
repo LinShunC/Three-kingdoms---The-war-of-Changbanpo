@@ -8,6 +8,7 @@
 #include "portal_green.h"
 
 #include "enemy.h"
+#include "Knight.h"
 #include "background.h"
 
 Game_Scene::Game_Scene()
@@ -22,6 +23,7 @@ Game_Scene::Game_Scene()
 	add_game_object(new Background("background"));
 
 	add_game_object(new Player("player"));
+	add_game_object(new Knight("Knight"));
 	add_game_object(new Portal_Exit("Exit"));
 	//add_game_object(new Portal_Entry("Entry"));
 	//add_game_object(new Enemy("Enemy"));

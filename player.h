@@ -32,7 +32,9 @@ public:
 	void push_state(State state, Assets* assets);
 	void pop_state(Assets* assets);
 	string getState();
-	void setDieState();
+
+	void setDeadTimes();
+	int getDeadTimes();
 private:
 	float _speed;
 	void handle_enter_state(State state, Assets* assets);

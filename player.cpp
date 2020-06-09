@@ -38,14 +38,7 @@ void Player::render(Uint32 milliseconds_to_simulate, Assets* assets, SDL_Rendere
 
 void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input* input, Scene*  )
 {
-	/*if (_dead_times < 3) {
-		if (scene->get_game_object("Enemy") == NULL)
-		{
-			scene->add_game_object(new Enemy("Enemy"));
-			_dead_times += 1;
 
-		}
-	}*/
 	State state = _state.top();
 
 	
@@ -70,7 +63,7 @@ void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input*
 		{
 			push_state(State::Attack, assets);
 		}
-		 if (distance_to_enemy < 10.0f)
+		 if (distance_to_enemy < 20.0f)
 		{
 			push_state(State::Dieing, assets);
 		}
@@ -90,7 +83,7 @@ void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input*
 		{
 			push_state(State::Attack, assets);
 		}
-		else if (distance_to_enemy < 10.0f)
+		else if (distance_to_enemy < 20.0f)
 		{
 			push_state(State::Dieing, assets);
 		}
@@ -105,7 +98,7 @@ void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input*
 			pop_state(assets);
 		}
 
-		else if (distance_to_enemy < 10.0f)
+		else if (distance_to_enemy < 20.0f)
 		{
 			push_state(State::Dieing, assets);
 		}
@@ -268,7 +261,7 @@ void Player::handle_enter_state(State state, Assets* assets)
 
 	{
 	_texture_id = "player.slide";
-	_speed = 0.3f;
+	_speed = 0.4f;
 
 	_current_run_timer_ms = 2000;
 
@@ -359,17 +352,31 @@ string Player::getState()
 
 		return "attack";
 		break;
+	
 	}
+	case State::Dieing:
+	{
+
+		return "Dieing";
+		break;
+
+	}
+
+	
 
 	}
 	return "";
-}
-void Player::setDieState()
-{
-	_state.top() = State::Dieing;
 }
 
 void Player::DistanceToEnemy(float distance)
 {
 	distance_to_enemy = distance;
+}
+void Player::setDeadTimes() 
+{
+	_dead_times += 1;
+}
+int Player::getDeadTimes()
+{
+	return _dead_times;
 }

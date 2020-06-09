@@ -27,6 +27,7 @@ Assets::Assets(SDL_Renderer* renderer)
 	_asset[player->id()] = player;
 	}
 
+
 	{const int frame_count_player = 10;
 	const Uint32 frame_duration_milliseconds_player = 370;
 
@@ -110,7 +111,22 @@ Assets::Assets(SDL_Renderer* renderer)
 	}
 
 
+	{const int frame_count_player = 8;
+	const Uint32 frame_duration_milliseconds_player = 370;
 
+	Animated_Texture* knight =
+		new Animated_Texture("knight.run", "Assets/knight.run.png", renderer,
+			frame_count_player, frame_duration_milliseconds_player, true);
+	_asset[knight->id()] = knight;
+	}
+	{const int frame_count_player = 9;
+	const Uint32 frame_duration_milliseconds_player = 370;
+
+	Animated_Texture* knight =
+		new Animated_Texture("knight.dead", "Assets/knight.dead.png", renderer,
+			frame_count_player, frame_duration_milliseconds_player, true);
+	_asset[knight->id()] = knight;
+	}
 	
 	const int frame_count_girl = 4;
 	const Uint32 frame_duration_milliseconds_girl = 300;

@@ -16,7 +16,7 @@ class Game_Object
 {
 public:
 	Game_Object(std::string id, std::string texture_id);
-	~Game_Object();
+	virtual ~Game_Object();
 
 	std::string id();
 
@@ -33,10 +33,14 @@ public:
 	void set_translation(Vector_2D translation);
 	void set_velocity(Vector_2D velocity);
 
+	bool to_be_destroyed();
+
+
 protected:
 	std::string _id;
 	std::string _texture_id;
 
+	bool _to_be_destroyed;
 	//float _x;
 	//float _y;
 	Vector_2D _translation;
