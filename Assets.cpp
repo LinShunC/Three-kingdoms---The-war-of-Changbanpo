@@ -17,6 +17,9 @@ Assets::Assets(SDL_Renderer* renderer)
 	Texture* Sword = new Texture("Sword", "Assets/sword.png", renderer);
 	_asset[Sword->id()] = Sword;
 
+	Texture* baby = new Texture("Baby", "Assets/baby.png", renderer);
+	_asset[baby->id()] = baby;
+
 		
 
 

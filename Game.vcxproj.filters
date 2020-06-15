@@ -39,9 +39,6 @@
     <ClCompile Include="game_object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="dino.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="walking_dino.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -49,9 +46,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="game_scene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="girl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="input.cpp">
@@ -96,6 +90,9 @@
     <ClCompile Include="sword.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="baby.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -116,9 +113,6 @@
     <ClInclude Include="game_object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="dino.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="walking_dino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -126,9 +120,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game_scene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="girl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="input.h">
@@ -177,6 +168,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sword.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="baby.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

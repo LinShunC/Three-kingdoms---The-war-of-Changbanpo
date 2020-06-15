@@ -1,6 +1,7 @@
 #pragma once
 
 #include "sword.h"
+#include "baby.h"
 #include "player.h"
 
 Sword::Sword(std::string id)
@@ -35,6 +36,7 @@ void Sword::simulate_AI(Uint32, Assets*, Input*, Scene* scene)
 
 		if (distance_to_player <= 30.f)
 		{
+			scene->add_game_object(new Baby("baby"));
 
 			_to_be_destroyed = true;
 		}
