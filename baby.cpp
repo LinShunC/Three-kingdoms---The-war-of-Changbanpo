@@ -10,6 +10,8 @@ Baby::Baby(std::string id)
 	_height = 100;
 	_width = 100;
 	_translation = Vector_2D(350, 350);
+	_collider.set_radius(_width / 10.0f);
+	_collider.set_translation(Vector_2D(_width / 2.0f, (float)_height));
 }
 
 Baby::~Baby()

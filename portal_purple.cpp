@@ -47,7 +47,7 @@ void Portal_Exit::simulate_AI(Uint32 milliseconds_to_simulate, Assets*, Input*, 
 	
 		
 	}
-	if (player->getDeadTimes() < 10 && !player->get_win()) {
+	if (!player->get_win()) {
 		if (_time_until_spawn_enemy <= 0 && should_spawn)
 		{
 			Enemy* enemy = new Enemy("enemy" + std::to_string(time(0)));
