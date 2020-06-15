@@ -4,7 +4,8 @@
 #include <string>
 #include "input.h"
 #include "scene.h"
-#include "dino.h"
+#include "game_object.h"
+
 
 
 class Editor 

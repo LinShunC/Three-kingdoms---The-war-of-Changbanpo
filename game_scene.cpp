@@ -1,9 +1,9 @@
 #include "game_scene.h"
-#include "dino.h"
+
 #include "walking_dino.h"
 
 #include "player.h"
-#include "girl.h"
+
 #include "portal_purple.h"
 #include "portal_green.h"
 

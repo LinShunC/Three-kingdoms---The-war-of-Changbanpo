@@ -22,6 +22,7 @@ Player::Player(std::string id)
 	_dead_times = 0;
 	distance_to_enemy = 50.0f;
 	is_boss_dead = false;
+	_is_win = false;
 	
 
 }
@@ -39,6 +40,8 @@ void Player::render(Uint32 milliseconds_to_simulate, Assets* assets, SDL_Rendere
 
 void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input* input, Scene*  )
 {
+
+
 
 	State state = _state.top();
 
@@ -370,11 +373,12 @@ int Player::getDeadTimes()
 {
 	return _dead_times;
 }
-void Player::setBossDead() 
+
+void Player::set_win() 
 {
-	is_boss_dead = true;
+	_is_win = true;
 }
-bool Player::isBossDead()
+bool Player::get_win() 
 {
-	return is_boss_dead;
+	return _is_win;
 }

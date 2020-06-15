@@ -1,5 +1,6 @@
 #include "game_object.h"
 #include"text.h"
+#include "player.h"
 #include <iostream>
 
 Game_Object::Game_Object(string id, string texture_id) : _translation(0, 0), _velocity(0, 0),_collider(0.0f,Vector_2D(0.f,0.f))
@@ -14,7 +15,7 @@ Game_Object::Game_Object(string id, string texture_id) : _translation(0, 0), _ve
 	_height = 100;
 	_enemy_message = false;
 	_boss_message = false;
-
+	_player_message = false;
 	_flip = SDL_FLIP_NONE;
 
 }
@@ -117,7 +118,7 @@ void Game_Object::render(Uint32, Assets* assets,SDL_Renderer* renderer, Configur
 		text_color.g = 0;
 		text_color.b = 0;
 		text_color.a = 255;
-		string x = "Who is there";
+		string x = "Who is there?? fight!!!!!!";
 
 		Text id(renderer, x.c_str(), text_color, "ID.Text");
 
@@ -136,6 +137,26 @@ void Game_Object::render(Uint32, Assets* assets,SDL_Renderer* renderer, Configur
 		Text id(renderer, x.c_str(), text_color, "ID.Text");
 
 		id.render(renderer, _translation + Vector_2D((float)_width, (float)_height));
+	}
+	else if (_player_message)
+	{
+
+		SDL_Color text_color;
+		text_color.r = 0;
+		text_color.g = 0;
+		text_color.b = 0;
+		text_color.a = 255;
+		string x = "Finally found You !!!!";
+
+
+		Player* player = (Player*)scene->get_game_object("player");
+
+		Vector_2D translation = player->translation()
+			+ Vector_2D((float)_width , (float)_height );
+
+		Text id(renderer, x.c_str(), text_color, "ID.Text");
+
+		id.render(renderer, translation);
 	}
 	else if (config->should_display_loc)
 	{

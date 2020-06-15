@@ -9,6 +9,7 @@
 #include "editor.h"
 #include"configuration.h"
 #include "pause_scene.h"
+#include "game_object.h"
 #include <stack>
 
 int main(void)

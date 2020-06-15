@@ -44,10 +44,10 @@ void Portal_Exit::simulate_AI(Uint32 milliseconds_to_simulate, Assets*, Input*, 
 			should_spawn = false;
 		}
 	
-	//	cout << game_object->id().find("enemy") << endl;
+	
 		
 	}
-	if (player->getDeadTimes() < 3) {
+	if (player->getDeadTimes() < 10 && !player->get_win()) {
 		if (_time_until_spawn_enemy <= 0 && should_spawn)
 		{
 			Enemy* enemy = new Enemy("enemy" + std::to_string(time(0)));
@@ -58,7 +58,7 @@ void Portal_Exit::simulate_AI(Uint32 milliseconds_to_simulate, Assets*, Input*, 
 			_time_until_spawn_enemy = 2000;
 		}
 	}
-	else if (player->getDeadTimes() >= 3 && should_spawn_boss)
+	 if (player->getDeadTimes() >= 3 && should_spawn_boss)
 	{
 		scene->add_game_object(new Knight("Knight"));
 		should_spawn_boss = false;

@@ -43,6 +43,7 @@ protected:
 	bool _to_be_destroyed;
 	bool _enemy_message;
 	bool _boss_message;
+	bool _player_message;
 	//float _x;
 	//float _y;
 	Vector_2D _translation;

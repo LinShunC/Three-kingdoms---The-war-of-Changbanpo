@@ -35,8 +35,9 @@ public:
 
 	void setDeadTimes();
 	int getDeadTimes();
-	void setBossDead();
-	bool  isBossDead();
+
+	void set_win();
+	bool get_win();
 private:
 	float _speed;
 	void handle_enter_state(State state, Assets* assets);
@@ -48,6 +49,7 @@ private:
 	int _next_run_time_ms;
 	int _dead_times;
 	bool is_boss_dead;
+	bool _is_win;
 
 
 
