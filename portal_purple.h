@@ -13,4 +13,6 @@ public:
 private:
 	int _time_until_spawn_enemy;
 	bool should_spawn;
+	bool should_spawn_boss;
+	bool should_spawn_equipment;
 };

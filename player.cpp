@@ -14,13 +14,14 @@ Player::Player(std::string id)
 	_collider.set_radius(_width / 5.0f);
 	_collider.set_translation(Vector_2D(_width / 2.0f, (float)_height));
 	_state.push(State::Idle);
-	_translation = Vector_2D(0, 0);
+	_translation = Vector_2D(0, 500);
 	_width = 90;
 	_height = 90;
 	_current_run_timer_ms = 0;
 	_next_run_time_ms = 0;
 	_dead_times = 0;
 	distance_to_enemy = 50.0f;
+	is_boss_dead = false;
 	
 
 }
@@ -114,18 +115,7 @@ void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input*
 		break;
 	case State::Dieing:
 		
-	/*	// if (distance_to_player > 50.0f && _velocity.magnitude() == 0.0f)
-	//	{
-	//		pop_state(assets);
-	//	}
-		  if (distance_to_player > 50.0f && input->is_button_state(Input::Button::SLIDE, Input::Button_State::DOWN) && _velocity.magnitude() > 0.0f)
-		 {
-			 push_state(State::slide, assets);
-		 }
-		 else if (distance_to_player > 50.0f && _velocity.magnitude() > 0.0f)
-		 {
-			 push_state(State::Walking, assets);
-		 }*/
+
 		break;
 
 	case State::Attack:
@@ -379,4 +369,12 @@ void Player::setDeadTimes()
 int Player::getDeadTimes()
 {
 	return _dead_times;
+}
+void Player::setBossDead() 
+{
+	is_boss_dead = true;
+}
+bool Player::isBossDead()
+{
+	return is_boss_dead;
 }

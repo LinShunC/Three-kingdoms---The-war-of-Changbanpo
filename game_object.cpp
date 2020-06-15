@@ -12,10 +12,10 @@ Game_Object::Game_Object(string id, string texture_id) : _translation(0, 0), _ve
 	_to_be_destroyed = false;
 
 	_height = 100;
-
+	_enemy_message = false;
+	_boss_message = false;
 
 	_flip = SDL_FLIP_NONE;
-
 
 }
 
@@ -81,7 +81,8 @@ void Game_Object::render(Uint32, Assets* assets,SDL_Renderer* renderer, Configur
 	destination.h = _height;
 
 	const float PI = 3.14159265f;
-	if (_velocity.magnitude() > 0)
+	Texture* texture = (Texture*)assets->get_asset(_texture_id);
+	if (_velocity.magnitude() > 0 && _texture_id!= "Sword")
 	{
 		if (abs(_velocity.angle()) <= (PI / 2.f))
 		{
@@ -93,7 +94,6 @@ void Game_Object::render(Uint32, Assets* assets,SDL_Renderer* renderer, Configur
 		}
 	}
 
-	Texture* texture = (Texture*)assets->get_asset(_texture_id);
 
 	texture->render(renderer, nullptr, &destination, _flip);
 	if (config->should_display_ids)
@@ -107,7 +107,35 @@ void Game_Object::render(Uint32, Assets* assets,SDL_Renderer* renderer, Configur
 
 		Text id(renderer, _id.c_str(), text_color, "ID.Text");
 
-		id.render(renderer, _translation + Vector_2D((float)_width / 2, (float)_height));
+		id.render(renderer, Vector_2D(_translation.x()/1.0f, _translation.y()/1.0f));
+	}
+	else if (_enemy_message) 
+	{
+
+		SDL_Color text_color;
+		text_color.r = 0;
+		text_color.g = 0;
+		text_color.b = 0;
+		text_color.a = 255;
+		string x = "Who is there";
+
+		Text id(renderer, x.c_str(), text_color, "ID.Text");
+
+		id.render(renderer, _translation + Vector_2D((float)_width , (float)_height) );
+	}
+	else if (_boss_message)
+	{
+
+		SDL_Color text_color;
+		text_color.r = 0;
+		text_color.g = 0;
+		text_color.b = 0;
+		text_color.a = 255;
+		string x = "I will Kill You !!!!";
+
+		Text id(renderer, x.c_str(), text_color, "ID.Text");
+
+		id.render(renderer, _translation + Vector_2D((float)_width, (float)_height));
 	}
 	else if (config->should_display_loc)
 	{

@@ -17,5 +17,6 @@ private:
 	Animated_Texture* _texture;
 	int _change_direction_timer;
 	std::minstd_rand0 _generator;
+	int time_when_dead;
 
 };

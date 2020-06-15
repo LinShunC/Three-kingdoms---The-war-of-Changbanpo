@@ -3,6 +3,7 @@
 #include "portal_purple.h"
 #include "enemy.h"
 #include "player.h"
+#include "Knight.h"
 #include <ctime>
 #include <iostream>
 
@@ -12,9 +13,10 @@ Portal_Exit::Portal_Exit(std::string id)
 {
 	_width = 200;
 	_height = 200;
-	_translation = Vector_2D(100, -200);
+	_translation = Vector_2D(1100, -1200);
 	_time_until_spawn_enemy = 3000;	
-	
+	should_spawn_boss = true;
+	should_spawn_equipment = false;
 
 }
 Portal_Exit::~Portal_Exit()
@@ -50,18 +52,16 @@ void Portal_Exit::simulate_AI(Uint32 milliseconds_to_simulate, Assets*, Input*, 
 		{
 			Enemy* enemy = new Enemy("enemy" + std::to_string(time(0)));
 
-
-		//	Vector_2D this_to_player = player->translation() - _translation;
-			//this_to_player.normalize();
-		//	this_to_player.scale(0.1f);
-
-			//enemy->set_translation(_translation);
-			//enemy->set_velocity(this_to_player);
-
-
+		
 			scene->add_game_object(enemy);
 			should_spawn = false;
 			_time_until_spawn_enemy = 2000;
 		}
 	}
+	else if (player->getDeadTimes() >= 3 && should_spawn_boss)
+	{
+		scene->add_game_object(new Knight("Knight"));
+		should_spawn_boss = false;
+	}
+	
 }

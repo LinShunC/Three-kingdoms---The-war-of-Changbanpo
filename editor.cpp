@@ -171,9 +171,10 @@ void  Editor::update(Input* input,Scene* scene, Configuration* config)
 		DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_DIALOG3), _window, Dialog_Proc);
 
 	}
-	Player* player = (Player*)scene->get_game_object("player"); 
+	else if(scene->id() != "Pause"){
+	//Player* player = (Player*)scene->get_game_object("player"); 
 	
-	if (player->getDeadTimes() >= 3 && time ==1 ) 
+	/*if (player->getDeadTimes() >= 3 && time ==1 ) 
 	{
 		DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_DIALOG4), _window, Dialog_Proc);
 		time = 0;
@@ -182,5 +183,6 @@ void  Editor::update(Input* input,Scene* scene, Configuration* config)
 	{
 		DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_DIALOG5), _window, Dialog_Proc);
 		time = 0;
-}
+	}*/
+	}
 }

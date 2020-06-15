@@ -23,7 +23,7 @@ int main(void)
 
 	std::stack<Scene*> scenes;
 	scenes.push(new Game_Scene());
-
+	//scenes.push(new Pause_Scene());
 	const Uint32 milliseconds_per_seconds = 1000;
 	const Uint32 frames_per_second = 60;
 	const Uint32 frame_time_ms = milliseconds_per_seconds / frames_per_second;

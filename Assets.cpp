@@ -14,6 +14,9 @@ Assets::Assets(SDL_Renderer* renderer)
 	Texture* colider = new Texture("Texture.Colider","Assets/collider.png",renderer);
 	_asset[colider->id()] = colider;
 
+	Texture* Sword = new Texture("Sword", "Assets/sword.png", renderer);
+	_asset[Sword->id()] = Sword;
+
 		
 
 
@@ -120,11 +123,11 @@ Assets::Assets(SDL_Renderer* renderer)
 	_asset[knight->id()] = knight;
 	}
 	{const int frame_count_player = 9;
-	const Uint32 frame_duration_milliseconds_player = 370;
+	const Uint32 frame_duration_milliseconds_player = 100;
 
 	Animated_Texture* knight =
 		new Animated_Texture("knight.dead", "Assets/knight.dead.png", renderer,
-			frame_count_player, frame_duration_milliseconds_player, true);
+			frame_count_player, frame_duration_milliseconds_player, false);
 	_asset[knight->id()] = knight;
 	}
 	
